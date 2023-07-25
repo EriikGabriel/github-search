@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "typeRoots": ["src/types"],
     "plugins": [
       {
         "name": "next"
@@ -25,7 +26,7 @@
       "@public/*": ["./public/*"],
       "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
-      "@@types/*": ["./src/types/*"],
+      "@@types/*": ["src/types/*"],
       "@styles/*": ["./src/styles/*"],
       "@contexts/*": ["./src/contexts/*"],
       "@providers/*": ["./src/providers/*"],
@@ -34,10 +35,13 @@
   },
   "include": [
     "next-env.d.ts",
+    "src/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "commitlint.config.js"
+    "commitlint.config.js",
+    "src/app/api/auth/[...nextauth]/route"
   ],
+
   "exclude": ["node_modules"]
 }

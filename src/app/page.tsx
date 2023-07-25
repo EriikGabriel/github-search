@@ -1,3 +1,9 @@
-export default function Home() {
-  return <h1 className="text-4xl font-bold">Hello World</h1>
+import { Header } from "@components/Header"
+
+export default async function Home() {
+  return (
+    <div className="min-h-screen">
+      <Header />
+    </div>
+  )
 }
