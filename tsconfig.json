@@ -24,11 +24,12 @@
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"],
       "@app/*": ["./src/app/*"],
-      "@components/*": ["./src/app/components/*"],
-      "@@types/*": ["./src/app/types/*"],
-      "@styles/*": ["./src/app/styles/*"],
-      "@contexts/*": ["./src/app/contexts/*"],
-      "@constants/*": ["./src/app/constants/*"]
+      "@components/*": ["./src/components/*"],
+      "@@types/*": ["./src/types/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@constants/*": ["./src/constants/*"]
     }
   },
   "include": [
