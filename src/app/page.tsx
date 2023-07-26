@@ -1,9 +1,16 @@
-import { Header } from "@components/Header"
+import { Search } from "@components/Search"
 
-export default async function Home() {
+interface PageProps {
+  params: { slug: string }
+  searchParams: { [key: string]: string }
+}
+
+export default async function Home({ searchParams }: PageProps) {
   return (
-    <div className="min-h-screen">
-      <Header />
+    <div className="h-screen overflow-auto">
+      <div className="mt-20 flex justify-center items-center">
+        <Search query={searchParams["search"]} />
+      </div>
     </div>
   )
 }

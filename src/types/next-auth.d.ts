@@ -18,6 +18,6 @@ declare module "next-auth" {
       sub: string
       token_type: string
       type: string
-    } & DefaultSession["user"]
+    }
   }
 }

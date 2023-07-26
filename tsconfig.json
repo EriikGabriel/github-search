@@ -25,11 +25,14 @@
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"],
       "@app/*": ["./src/app/*"],
+      "@shadcn/*": ["./src/components/ui/*"],
       "@components/*": ["./src/components/*"],
       "@@types/*": ["src/types/*"],
+      "@auth/*": ["src/app/api/auth/[...nextauth]/*"],
       "@styles/*": ["./src/styles/*"],
       "@contexts/*": ["./src/contexts/*"],
       "@providers/*": ["./src/providers/*"],
+      "@stores/*": ["./src/stores/*"],
       "@constants/*": ["./src/constants/*"]
     }
   },
