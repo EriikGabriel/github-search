@@ -32,6 +32,7 @@
       "@styles/*": ["./src/styles/*"],
       "@contexts/*": ["./src/contexts/*"],
       "@providers/*": ["./src/providers/*"],
+      "@services/*": ["./src/services/*"],
       "@stores/*": ["./src/stores/*"],
       "@constants/*": ["./src/constants/*"]
     }

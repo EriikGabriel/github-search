@@ -12,6 +12,9 @@ export const OPTIONS: AuthOptions = {
   ],
   pages: { signIn: "/login" },
   callbacks: {
+    async redirect({ baseUrl, url }) {
+      return url
+    },
     async jwt({ token, user, session, account }) {
       return { ...token, ...user, ...session, ...account }
     },

@@ -75,4 +75,16 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  ::-webkit-scrollbar-track {
+    @apply rounded-full;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full shadow-xl bg-zinc-800 px-2;
+  }
 }

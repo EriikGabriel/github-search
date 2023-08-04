@@ -1,32 +1,32 @@
 "use client"
 
 import { usePathname, useRouter } from "next/navigation"
-import { useTransition } from "react"
+import { ComponentProps, useTransition } from "react"
 import { CommandInput } from "../ui/command"
 
-interface InputProps {
-  placeholder: string
-}
+interface InputProps extends ComponentProps<typeof CommandInput> {}
 
-export function Input({ placeholder }: InputProps) {
+export function Input({ ...props }: InputProps) {
   const { replace } = useRouter()
   const pathname = usePathname()
 
   const [isPending, startTransition] = useTransition()
 
-  const handleSearch = (query: string) => {
+  const handleSearch = () => {
+    const input = document.querySelector(".search-input") as HTMLInputElement
+    const query = input.value
     const params = new URLSearchParams(location.search)
-
     query ? params.set("search", query) : params.delete("search")
-
     startTransition(() => replace(`${pathname}?${params.toString()}`))
   }
 
   return (
     <CommandInput
-      className="text-base"
-      placeholder={placeholder}
-      onValueChange={(query) => handleSearch(query)}
+      className="search-input text-base"
+      onKeyDown={(e) => e.code === "Enter" && handleSearch()}
+      onClickButton={handleSearch}
+      datatype={isPending ? "loading" : "ready"}
+      {...props}
     />
   )
 }

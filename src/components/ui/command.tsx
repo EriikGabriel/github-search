@@ -2,11 +2,12 @@
 
 import { DialogProps } from "@radix-ui/react-dialog"
 import { Command as CommandPrimitive } from "cmdk"
-import { Search } from "lucide-react"
+import { ChevronRightIcon, RotateCw, Search } from "lucide-react"
 import * as React from "react"
 
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
+import { Button } from "./button"
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -37,11 +38,16 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   )
 }
 
+interface CommandInputProps
+  extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> {
+  onClickButton?: React.MouseEventHandler<HTMLButtonElement>
+}
+
 const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
->(({ className, ...props }, ref) => (
-  <div className="flex items-center border-b px-3 py-3" cmdk-input-wrapper="">
+  CommandInputProps
+>(({ className, datatype, onClickButton, ...props }, ref) => (
+  <div className="flex items-center border-0 px-3 py-3" cmdk-input-wrapper="">
     <Search className="mr-3 h-5 w-5 shrink-0 opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
@@ -51,6 +57,16 @@ const CommandInput = React.forwardRef<
       )}
       {...props}
     />
+
+    <div className="flex gap-5 items-center justify-center ml-3">
+      {datatype === "loading" && (
+        <RotateCw className="animate-spin text-muted-foreground h-4 w-4" />
+      )}
+
+      <Button variant="ghost" size="icon" onClick={onClickButton}>
+        <ChevronRightIcon className="text-muted-foreground h-5 w-5" />
+      </Button>
+    </div>
   </div>
 ))
 
