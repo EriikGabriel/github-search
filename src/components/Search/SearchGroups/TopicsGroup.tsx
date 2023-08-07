@@ -9,8 +9,6 @@ interface TopicsGroupProps {
 }
 
 export function TopicsGroup({ topics }: TopicsGroupProps) {
-  console.log(topics)
-
   return (
     <CommandGroup heading="Topics">
       {topics.map(({ name, short_description, created_by }) => (

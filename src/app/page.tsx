@@ -9,7 +9,11 @@ export default async function Home({ searchParams }: PageProps) {
   return (
     <div className="h-screen overflow-auto">
       <div className="mt-20 flex justify-center items-center">
-        <Search query={searchParams["search"]} type={searchParams["type"]} />
+        <Search
+          query={searchParams["search"]}
+          type={searchParams["type"]}
+          page={searchParams["page"]}
+        />
       </div>
     </div>
   )
