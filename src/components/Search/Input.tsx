@@ -1,23 +1,18 @@
 "use client"
 
-import { usePathname, useRouter } from "next/navigation"
-import { ComponentProps, useTransition } from "react"
+import { useUrlParam } from "@/hooks/useUrlParam"
+import { ComponentProps } from "react"
 import { CommandInput } from "../ui/command"
 
 interface InputProps extends ComponentProps<typeof CommandInput> {}
 
 export function Input({ ...props }: InputProps) {
-  const { replace } = useRouter()
-  const pathname = usePathname()
-
-  const [isPending, startTransition] = useTransition()
+  const { setUrlParam, isPending } = useUrlParam()
 
   const handleSearch = () => {
     const input = document.querySelector(".search-input") as HTMLInputElement
     const query = input.value
-    const params = new URLSearchParams(location.search)
-    query ? params.set("search", query) : params.delete("search")
-    startTransition(() => replace(`${pathname}?${params.toString()}`))
+    setUrlParam("search", query)
   }
 
   return (

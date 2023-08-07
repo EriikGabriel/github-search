@@ -31,6 +31,7 @@
       "@auth/*": ["src/app/api/auth/[...nextauth]/*"],
       "@styles/*": ["./src/styles/*"],
       "@contexts/*": ["./src/contexts/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@providers/*": ["./src/providers/*"],
       "@services/*": ["./src/services/*"],
       "@stores/*": ["./src/stores/*"],

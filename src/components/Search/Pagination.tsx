@@ -1,10 +1,10 @@
 "use client"
 
+import { useUrlParam } from "@hooks/useUrlParam"
 import { Button } from "@shadcn/button"
 import { ToggleGroup, ToggleGroupItem } from "@shadcn/toggle-group"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-import { usePathname, useRouter } from "next/navigation"
-import { useEffect, useState, useTransition } from "react"
+import { useEffect, useState } from "react"
 
 interface PaginationProps {
   total_count: number
@@ -15,10 +15,7 @@ export function Pagination({ total_count }: PaginationProps) {
   const [pageNumbers, setPageNumbers] = useState<number[]>([])
   const [rangePages, setRangePages] = useState<number[]>([])
 
-  const { replace } = useRouter()
-  const pathname = usePathname()
-
-  const [isPending, startTransition] = useTransition()
+  const { setUrlParam } = useUrlParam()
 
   useEffect(() => {
     setPageNumbers([...Array(total_count).keys()].map((i) => i + 1))
@@ -34,10 +31,7 @@ export function Pagination({ total_count }: PaginationProps) {
     if (page < 1 || page > total_count) return
 
     setCurrentPage(page)
-
-    const params = new URLSearchParams(location.search)
-    params.set("page", page.toString())
-    startTransition(() => replace(`${pathname}?${params.toString()}`))
+    setUrlParam("page", `${page}`)
 
     const lastPage = page === total_count ? total_count : rangePages.at(-1)
     const firstPage = page === 1 ? 1 : rangePages.at(0)
